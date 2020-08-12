@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
 
 import signInBackground from '../../assets/images/sign-in-background.png';
 
@@ -140,6 +141,8 @@ export const FormFooter = styled.div`
       margin-left: 8px;
     }
   }
-  
+`;
 
+export const EyeVisible = styled(AiOutlineEyeInvisible)`
+  fill: var(--color-primary);
 `;

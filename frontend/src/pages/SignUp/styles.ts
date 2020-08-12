@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { MdKeyboardBackspace } from 'react-icons/md';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
 
 import signInBackground from '../../assets/images/sign-in-background.png';
 
@@ -79,4 +80,8 @@ export const AnimationContainer = styled.div`
       margin-bottom: 30px;
     }
   }
+`;
+
+export const EyeVisible = styled(AiOutlineEyeInvisible)`
+  fill: var(--color-primary);
 `;

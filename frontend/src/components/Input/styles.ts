@@ -74,3 +74,5 @@ export const Error = styled(Tooltip)`
     }
   }
 `;
+
+export const Eye = styled.div``;

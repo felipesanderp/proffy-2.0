@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { AiOutlineEye } from 'react-icons/ai';
 import * as Yup from 'yup';
 import { Form } from '@unform/web'; 
@@ -8,7 +8,7 @@ import api from '../../services/api';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import { Container, BackIcon, Background, Content, AnimationContainer } from './styles';
+import { Container, BackIcon, Background, Content, AnimationContainer, EyeVisible } from './styles';
 
 import { useSuccess } from '../../hooks/success';
 import { useToast } from '../../hooks/toast'
@@ -25,8 +25,14 @@ interface SignUpData {
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
+  const [visibility, setVisibility] = useState(false);
+
   const { addToast } = useToast();
   const { addSuccess } = useSuccess();
+
+  const handleToggleVisibility = useCallback(() => {
+    setVisibility(!visibility);
+  }, [visibility]);
 
   const handleSubmit = useCallback(
     async (data: SignUpData) => {
@@ -92,7 +98,13 @@ const SignUp: React.FC = () => {
             <Input name="name" placeholder="Nome"  />
             <Input name="lastname" placeholder="Sobrenome"  />
             <Input name="email" placeholder="Email"  />
-            <Input name="password" type="password" placeholder="Senha" icon={AiOutlineEye} />
+            <Input
+              name="password"
+              type={visibility ? 'text' : 'password'}
+              placeholder="Senha"
+              toggleVisibility={handleToggleVisibility}
+              icon={visibility ? EyeVisible : AiOutlineEye}
+            />
             
             <Button type="submit">Concluir Cadastro</Button>
           </Form>

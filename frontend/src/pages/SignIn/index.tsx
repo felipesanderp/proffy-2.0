@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { AiOutlineEye } from 'react-icons/ai';
 import * as Yup from 'yup';
 import { Form } from '@unform/web'; 
@@ -7,7 +7,7 @@ import { useHistory, Link } from 'react-router-dom';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import { Container, Background, Content, AnimationContainer, FormFooter } from './styles';
+import { Container, Background, Content, AnimationContainer, FormFooter, EyeVisible } from './styles';
 
 import purpleHeart from '../../assets/images/icons/purple-heart.svg';
 
@@ -25,8 +25,16 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
+  const [visibility, setVisibility] = useState(false);
+
   const { signIn } = useAuth();
   const { addToast } = useToast();
+
+  const handleToggleVisibility = useCallback(() => {
+    setVisibility(!visibility);
+
+
+  }, [visibility]);
 
   const handleSubmit = useCallback(
     async (data: SignInData) => {
@@ -78,13 +86,14 @@ const SignIn: React.FC = () => {
           <Form onSubmit={handleSubmit} ref={formRef}>
             <h1>Fazer login</h1>
 
-            <Input name="email" placeholder="Email" />
+            <Input autoFocus={true} name="email" placeholder="Email" />
             
             <Input
               name="password" 
-              type="password"
-              placeholder="Senha" 
-              icon={AiOutlineEye}
+              type={visibility ? 'text' : 'password'}
+              placeholder="Senha"
+              toggleVisibility={handleToggleVisibility}
+              icon={visibility ? EyeVisible : AiOutlineEye}
             />
 
             <div className="remember-forgot">
