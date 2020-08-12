@@ -49,6 +49,7 @@ const Input: React.FC<InputProps> = ({
       isFocused={isFocused}
       isErrored={!!error}
     >
+      <div className="border"></div>
       <input
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}

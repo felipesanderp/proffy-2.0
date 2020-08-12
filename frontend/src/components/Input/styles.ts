@@ -18,6 +18,18 @@ export const Container = styled.div<ContainerProps>`
   border: 1px solid var(--color-line-in-white);
   border-radius: 8px;
 
+  .border {
+    border-left: 2px solid var(--color-box-footer);
+    height: 48px;
+    border-radius: 8px;
+
+    ${(props) =>
+    props.isFocused &&
+    css`
+      border-left-color: var(--color-primary);
+    `}
+  }
+
   ${(props) =>
     props.isErrored &&
     css`
@@ -25,12 +37,14 @@ export const Container = styled.div<ContainerProps>`
     `}
 
   input {
+    position: relative;
     width: 100%;
     flex: 1;
     background: transparent;
     border: 0;
     outline: 0;
     padding: 24px;
+    color: var(--color-text-base);
       
     &::placeholder {
       color: var(--color-text-complement);
@@ -46,12 +60,15 @@ export const Container = styled.div<ContainerProps>`
 export const Error = styled(Tooltip)`
   height: 20px;
   margin-left: 16px;
+
   svg {
     margin: 24;
   }
+
   span {
     background: #c53030;
     color: #fff;
+
     &::before {
       border-color: #c53030 transparent;
     }
