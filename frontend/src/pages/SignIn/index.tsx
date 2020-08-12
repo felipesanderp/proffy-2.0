@@ -13,7 +13,7 @@ import purpleHeart from '../../assets/images/icons/purple-heart.svg';
 
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast'
-import Input from '../../components/Input';
+import  Input from '../../components/Input';
 import Button from '../../components/Button';
 
 interface SignInData {
@@ -68,9 +68,7 @@ const SignIn: React.FC = () => {
     }, 
     [signIn, addToast, history],
   );
-
-
-
+  
   return (
     <Container>
       <Background />
@@ -80,8 +78,14 @@ const SignIn: React.FC = () => {
           <Form onSubmit={handleSubmit} ref={formRef}>
             <h1>Fazer login</h1>
 
-            <Input name="email" placeholder="Email"  />
-            <Input name="password" type="password" placeholder="Senha" icon={AiOutlineEye} />
+            <Input name="email" placeholder="Email" />
+            
+            <Input
+              name="password" 
+              type="password"
+              placeholder="Senha" 
+              icon={AiOutlineEye}
+            />
 
             <div className="remember-forgot">
               <input type="checkbox" name="remember" id="remember"/>
@@ -97,7 +101,7 @@ const SignIn: React.FC = () => {
           <FormFooter>
             <div className="signup">
               <p>Não tem conta?</p>
-              <Link to="/sigup" >
+              <Link to="/signup" >
               Cadastre-se
               </Link>
             </div>

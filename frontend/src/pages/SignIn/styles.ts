@@ -98,6 +98,7 @@ export const AnimationContainer = styled.div`
   }
 `;
 
+
 export const FormFooter = styled.div`
   display: flex;
   align-self: flex-start;
