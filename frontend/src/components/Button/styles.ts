@@ -18,4 +18,10 @@ export const Container = styled.button`
   &:hover {
     background: var(--color-secundary-dark);
   }
+
+  &:disabled {
+    background: var(--color-button-disable);
+    cursor: initial;
+    color: var(--color-text-complement);
+  }
 `;
