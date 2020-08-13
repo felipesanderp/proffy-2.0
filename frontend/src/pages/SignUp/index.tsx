@@ -26,6 +26,7 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const [visibility, setVisibility] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { addToast } = useToast();
   const { addSuccess } = useSuccess();
@@ -37,6 +38,7 @@ const SignUp: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: SignUpData) => {
       try {
+        setLoading(true);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -75,6 +77,8 @@ const SignUp: React.FC = () => {
           title: 'Erro no cadastro',
           description: 'Ocorreu um erro ao fazer o cadastro, tente novamente',
         });
+      } finally {
+        setLoading(false);
       }
     }, 
     [addSuccess, addToast],
@@ -106,7 +110,7 @@ const SignUp: React.FC = () => {
               icon={visibility ? EyeVisible : AiOutlineEye}
             />
             
-            <Button type="submit">Concluir Cadastro</Button>
+            <Button type="submit" loading={loading}>Concluir Cadastro</Button>
           </Form>
         </AnimationContainer>
       </Content>

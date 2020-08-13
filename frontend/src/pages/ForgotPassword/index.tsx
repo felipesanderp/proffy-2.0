@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import * as Yup from 'yup';
 import { Form } from '@unform/web'; 
 import { FormHandles } from '@unform/core';
@@ -20,6 +20,8 @@ interface ForgotPasswordData {
 
 const ForgotPassword: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  
+  const [loading, setLoading] = useState(false);
 
   const { addToast } = useToast();
   const { addSuccess } = useSuccess();
@@ -27,6 +29,7 @@ const ForgotPassword: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: ForgotPasswordData) => {
       try {
+        setLoading(true);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -62,6 +65,8 @@ const ForgotPassword: React.FC = () => {
           title: 'Erro na redefinição de senha',
           description: 'Ocorreu um erro ao fazer a redefinição, tente novamente',
         });
+      } finally {
+        setLoading(false);
       }
     }, 
     [addSuccess, addToast],
@@ -83,7 +88,7 @@ const ForgotPassword: React.FC = () => {
 
             <Input name="email" placeholder="Email"  />
             
-            <Button type="submit">Enviar</Button>
+            <Button type="submit" loading={loading}>Enviar</Button>
           </Form>
         </AnimationContainer>
       </Content>

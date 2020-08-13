@@ -26,6 +26,7 @@ const SignIn: React.FC = () => {
   const history = useHistory();
 
   const [visibility, setVisibility] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { signIn } = useAuth();
   const { addToast } = useToast();
@@ -39,6 +40,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: SignInData) => {
       try {
+        setLoading(true)
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -72,6 +74,8 @@ const SignIn: React.FC = () => {
           title: 'Erro na autenticação',
           description: 'Ocorreu um erro ao fazer login, cheque as credenciais',
         });
+      } finally {
+        setLoading(false);
       }
     }, 
     [signIn, addToast, history],
@@ -103,7 +107,7 @@ const SignIn: React.FC = () => {
               <Link to="/forgot-password">Esqueci minha senha</Link>
             </div>
             
-            <Button type="submit">Entrar</Button>
+            <Button type="submit" loading={loading}>Entrar</Button>
           </Form>
 
 
