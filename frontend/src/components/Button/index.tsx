@@ -14,7 +14,10 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => (
   <Container type="button" disabled={loading} {...rest}>
-    {loading ? <PulseLoader size={12} css={override} color={'#8257E5'} /> : children}
+    {loading 
+      ? <PulseLoader size={10} css={override} margin={5} color={'#8257E5'} /> 
+      : children
+    }
   </Container>
 );
 
