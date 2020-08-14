@@ -9,7 +9,18 @@ import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 import studyIcon from '../../assets/images/icons/study.svg';
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
 
-import { Container, Content, Header, LogoutIcon, LogoContainer, ButtonsContainer, Buttons, Info } from './styles';
+import {
+  Container,
+  Content,
+  Header,
+  LogoutIcon,
+  LogoContainer,
+  ArrowDown,
+  ButtonsContainer,
+  Buttons,
+  Info,
+  Total
+} from './styles';
 
 const Landing: React.FC = () => {
   const { signOut } = useAuth();
@@ -31,24 +42,27 @@ const Landing: React.FC = () => {
         <LogoContainer>
           <div>
             <img src={logoImg} alt="Proffy"/>
-            <h2>Sua plataforma de <br /> estudos online.</h2>
+            <h2>Sua plataforma de estudos online.</h2>
           </div>
 
           <img src={landingImg} alt="Landing"/>
+
+          <ArrowDown size={50} />
         </LogoContainer>
       </Content>
-
+    
       <ButtonsContainer>
         <Info>
           <div>
             <p>Seja bem vindo.</p>
             <span>O que deseja fazer?</span>
           </div>
-
-          <span>
-            Total de 285 conexeções <br /> já realizadas <img src={purpleHeartIcon} alt="Coração roxo" />
-          </span>
         </Info>
+        <Total>
+          <span>
+            Total de 285 conexeções já realizadas <img src={purpleHeartIcon} alt="Coração roxo" />
+          </span>
+        </Total>
       
         <Buttons>
           <Link to="/study" className="study">
