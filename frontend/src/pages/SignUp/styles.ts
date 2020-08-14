@@ -26,6 +26,10 @@ export const Background = styled.div`
   flex: 1;
   background: url(${signInBackground}) no-repeat center;
   background-size: cover;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const Content = styled.div`
@@ -35,6 +39,10 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 650px;
+
+  @media (max-width: 768px) {
+    max-width: 768px;
+  }
 `;
 
 const appearFromLeft = keyframes`

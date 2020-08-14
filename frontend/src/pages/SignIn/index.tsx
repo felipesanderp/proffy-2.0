@@ -90,7 +90,7 @@ const SignIn: React.FC = () => {
           <Form onSubmit={handleSubmit} ref={formRef}>
             <h1>Fazer login</h1>
 
-            <Input autoFocus={true} name="email" placeholder="Email" />
+            <Input name="email" placeholder="Email" />
             
             <Input
               name="password" 
