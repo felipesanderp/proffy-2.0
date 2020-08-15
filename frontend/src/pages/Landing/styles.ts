@@ -23,7 +23,7 @@ export const Header = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  width: 90%;
+  width: 90vw;
   max-width: 425px;
 
   > div {
@@ -81,7 +81,13 @@ export const Header = styled.div`
   }
 
   @media (min-width: 1440px) {
+    width: 80vw;
     max-width: 1440px;
+  }
+
+  @media (min-width: 2560px) {
+    width: 70vw;
+    max-width: 2560px;
   }
 `;
 
@@ -119,7 +125,6 @@ export const LogoContainer = styled.div`
   }
 
   > img {
-    margin-top: 2.5rem;
     width: 100%;
     height: 100%;
   }
@@ -128,15 +133,13 @@ export const LogoContainer = styled.div`
     max-width: 768px;
 
     > img {
-      width: 100%;
-      height: 350px;
+      height: 290px;
     }
   }
 
   @media (min-width: 1024px) {
     width: 90vw;
     max-width: 1024px;
-
     flex-direction: row;
     justify-content: space-between;
 
@@ -147,26 +150,39 @@ export const LogoContainer = styled.div`
     }
 
     > img {
-      width: 100%;
-      height: 300px;
+      height: 250px;
     }
   }
 
   @media (min-width: 1360px) and (max-width: 1439px) {
     width: 80vw;
     max-width: 1360px;
-    
+
     > img {
-      height: 250px;
+      height: 290px;
     }
   }
 
   @media (min-width: 1440px) {
+    width: 80vw;
     max-width: 1440px;
-    
+
+    > img {
+      height: 300px;
+    }
+  }
+
+  @media (min-width: 2560px) {
+    width: 70vw;
+    max-width: 2560px;
+
     > div {
       > img {
-        height: 12rem;
+        height: 13rem;
+      }
+
+      > h2 {
+        max-width: 100%;
       }
     }
   }
@@ -191,7 +207,7 @@ export const ArrowDown = styled(FiChevronsDown)`
   animation: ${scrollAnimation} 3.5s ease infinite;
 
   @media (min-width: 768px) {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
   @media (min-width: 1024px) {
@@ -211,9 +227,12 @@ export const ButtonsContainer = styled.div`
     "total total"
   ;
 
-  @media (min-width: 768px) {
-    max-width: 768px;
+  @media (min-width: 450px) and (max-width: 660px) {
+    max-width: 650px;
+  }
 
+  @media (min-width: 660px) {
+    max-width: 768px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 60vh 20vh;
     grid-template-areas: 
@@ -221,10 +240,13 @@ export const ButtonsContainer = styled.div`
       "total total"
   }
 
-  @media (min-width: 1024px) {
-    width: 90%;
-    max-width: 1024px;
+  @media (min-width: 844px) {
+    max-width: 940px;
+  }
 
+  @media (min-width: 1024px) {
+    width: 100vw;
+    max-width: 1024px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -233,13 +255,18 @@ export const ButtonsContainer = styled.div`
   }
 
   @media (min-width: 1360px) and (max-width: 1439px) {
-    width: 80vw;
+    width: 85vw;
     max-width: 1360px;
   }
 
   @media (min-width: 1440px) {
-    width: 100%;
+    width: 85vw;
     max-width: 1440px;
+  }
+
+  @media (min-width: 2560px) {
+    width: 80vw;
+    max-width: 2560px;
   }
 `;
 
@@ -263,12 +290,6 @@ export const Info = styled.div`
   @media (min-width: 1024px) {
     > div {
       margin-right: 8rem;
-    }
-  }
-
-  @media (min-width: 1440px) {
-    > div {
-      margin-right: 10rem;
     }
   }
 `;
@@ -338,35 +359,26 @@ export const Buttons = styled.div`
       }
     }
 
-    @media (min-width: 1024px) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+  @media (min-width: 1024px) {
 
-      a {
-        width: 22rem;
-        height: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-        & + a {
-          margin-top: 0;
-          margin-left: 1.5rem;
-        }
+    a {
+      width: 23.5rem;
+      height: 10rem;
+
+      & + a {
+        margin-top: 0;
+        margin-left: 1.5rem;
       }
     }
+  }
 
-    @media (min-width: 1360px) and (max-width: 1439px) {
-      margin-left: 6rem;
-
-      a {
-        width: 28rem;
-        height: 10rem;
-      }
+  @media (min-width: 1360px) {
+    a {
+      width: 28rem;
     }
-
-    @media (min-width: 1440px) {
-      a {
-        width: 28rem;
-        height: 10rem;
-      }
-    }
+  }
 `;
